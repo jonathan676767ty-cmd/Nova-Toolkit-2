@@ -4,7 +4,15 @@ Nova Toolkit is a Windows desktop suite built with .NET 10 and Windows Forms. It
 
 ## Logo and HTML landing page
 
-The app logos are `logo.svg` (web and scalable artwork) and `logo.ico` (Windows app and installer icon). Open `index.html` in a browser to view the responsive product page; its download buttons point to the installer at `dist\NovaToolkit-Setup.exe`.
+The app logos are `logo.svg` (web and scalable artwork) and `logo.ico` (Windows app and installer icon).
+
+To view the landing page and download Nova Toolkit:
+
+1. Open `index.html` in a web browser. It is a self-contained page and can be viewed directly from the project folder.
+2. Select **Download for Windows** or **Download Nova Toolkit** on the page.
+3. The download link points to `dist\NovaToolkit-Setup.exe`, the Windows installer included in this project.
+
+Keep `index.html`, `logo.svg`, and the `dist` folder together so the logo and download link continue to work. To share the page online, publish those files with a static website host such as GitHub Pages; see [Publish the website with GitHub Pages](#publish-the-website-with-github-pages).
 
 ## Included tools
 
