@@ -10,9 +10,9 @@ To view the landing page and download Nova Toolkit:
 
 1. Open `index.html` in a web browser. It is a self-contained page and can be viewed directly from the project folder.
 2. Select **Download for Windows** or **Download Nova Toolkit** on the page.
-3. The download link points to `dist\NovaToolkit-Setup.exe`, the Windows installer included in this project.
+3. From the project copy, the download link opens `dist\NovaToolkit-Setup.exe`, the Windows installer built on your PC.
 
-Keep `index.html`, `logo.svg`, and the `dist` folder together so the logo and download link continue to work. To share the page online, publish those files with a static website host such as GitHub Pages; see [Publish the website with GitHub Pages](#publish-the-website-with-github-pages).
+Keep `index.html`, `logo.svg`, and the `dist` folder together to use the local download link. The installer is about 50 MB, so it is too large for GitHub's regular file upload; publish it as a GitHub Release asset for website downloads.
 
 ## Included tools
 
@@ -63,10 +63,10 @@ powershell -ExecutionPolicy Bypass -File .\build-installer.ps1
 
 The setup program is written to `dist\NovaToolkit-Setup.exe`. It installs per-user under `%LocalAppData%\Programs\Nova Toolkit`, creates a Start Menu shortcut, and offers an optional desktop shortcut. It does not require administrator rights.
 
-## Publish the website with GitHub Pages
+## Download the latest installer with PowerShell
 
-The `.github\workflows\pages.yml` workflow publishes `index.html`, `logo.svg`, and the installer to GitHub Pages when changes are pushed to the `main` or `master` branch. Create a GitHub repository, push this project to it, then enable GitHub Pages with **GitHub Actions** as the build and deployment source in the repository's Pages settings.
+After a public GitHub Release has been published with `NovaToolkit-Setup.exe` attached, run:
 
-To use a custom domain, first register it with a domain registrar. Set the repository Actions variable `CUSTOM_DOMAIN` to the domain (for example, `jonathan656556.com`), add the DNS records GitHub Pages specifies for that domain, and set the custom domain in the repository's Pages settings. The workflow will then include the matching `CNAME` file when it deploys. A registry lookup returning no record does not guarantee a domain is available to register.
-
-The app stores notes, tasks, browser data, and microphone recordings in `%LocalAppData%\NovaToolkit`. Password generation and text processing run locally. Audio recording uses NAudio; media playback uses Windows media codecs. The embedded browser uses Microsoft Edge WebView2 and requires the WebView2 Runtime, which is included with most Windows installations that have Microsoft Edge. Physical-drive health depends on Windows exposing storage health data.
+```powershell
+powershell -ExecutionPolicy Bypass -File .\download-installer.ps1
+```
